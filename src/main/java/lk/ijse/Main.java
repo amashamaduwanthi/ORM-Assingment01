@@ -1,13 +1,15 @@
 package lk.ijse;
 
-import jakarta.persistence.Query;
 import lk.ijse.Entity.Author;
 import lk.ijse.Entity.Book;
 import lk.ijse.config.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
+
+import static java.util.Locale.UK;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -42,6 +44,8 @@ public class Main {
         query.setParameter("authorId", 1);
          int result = query.executeUpdate();
         System.out.println("Result: " + result);*/
+        //03
+
         //04
 
       /*  Query query = session.createQuery("SELECT AVG(b.price) FROM Book b");
@@ -49,12 +53,23 @@ public class Main {
         System.out.println(averagePrice);*/
 
         //05
-        Query query = session.createQuery("SELECT a.id, COUNT(b.id) FROM Author a JOIN Book b on a.id = b.author.id GROUP BY a.id");
+       /* Query query = session.createQuery("SELECT a.id, COUNT(b.id) FROM Author a JOIN Book b on a.id = b.author.id GROUP BY a.id");
         List<Object[]> resultList = query.getResultList();
 
         for (Object[] objects : resultList) {
             System.out.println(objects[0] + " : " + objects[1]);
-        }
+        }*/
+        //06
+     /*   Query query = session.createQuery("select b.title from Book b join Author a on b.author.id=a.id where a.country= :countryName");
+        query.setParameter("countryName","UK");
+        List resultList = query.getResultList();
+        for(Object o:resultList){
+            System.out.println(o);
+        }*/
+
+        //07
+
+        //10
 
         transaction.commit();
         session.close();
